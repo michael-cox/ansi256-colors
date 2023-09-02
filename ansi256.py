@@ -54,10 +54,10 @@ def print_table(fg_or_bg, fg, bg):
 
 def write_exports(file):
     for i in range(256):
-        file.write('export COLOR{}_{}={}'.format(i, 'FG', SH_FORMAT.format(FGBG=FGBG_TO_CODE["fg"], ID=i)))
-        file.write('export COLOR{}_{}={}'.format(i, 'BG', SH_FORMAT.format(FGBG=FGBG_TO_CODE["bg"], ID=i)))
-    RESET_FG = 'export COLOR_{}_{}={}'.format('RESET', 'FG', "$'%{\e[39m%}'")
-    RESET_BG = 'export COLOR_{}_{}={}'.format('RESET', 'BG', "$'%{\e[49m%}'")
+        file.write('export COLOR{}_{}={}\n'.format(i, 'FG', SH_FORMAT.format(FGBG=FGBG_TO_CODE["fg"], ID=i)))
+        file.write('export COLOR{}_{}={}\n'.format(i, 'BG', SH_FORMAT.format(FGBG=FGBG_TO_CODE["bg"], ID=i)))
+    RESET_FG = 'export COLOR_{}_{}={}\n'.format('RESET', 'FG', "$'%{\e[39m%}'")
+    RESET_BG = 'export COLOR_{}_{}={}\n'.format('RESET', 'BG', "$'%{\e[49m%}'")
     file.write(RESET_FG)
     file.write(RESET_BG)
 
@@ -97,11 +97,12 @@ if __name__ == "__main__":
         test_text(args.TEXT, fg, bg)
 
     if 'FILE' in args and args.FILE:
-        if args.file.is_file():
-            r = input("{} will be overwritten. Are you sure (y/N)? ".format(args.file))
-            if r.upper() != 'y':
+        if args.FILE.is_file():
+            r = input("{} will be overwritten. Are you sure (y/N)? ".format(args.FILE))
+            if r.upper() != 'Y':
                 exit(1)
-            write_exports(args.file)
+        with open(args.FILE, 'w') as f:
+            write_exports(f)
 
 
     # with open(pathlib.Path.home() / '.zsh.colors', 'w') as f:
