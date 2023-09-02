@@ -36,10 +36,14 @@ options:
 ```
 
 For example:
-`python3 ansi256.py print-table both`
+```
+python3 ansi256.py print-table both
+```
 ![](./screenshots/print-table.png)
 
-`python3 ansi256.py print-table -b 218 fg`
+```
+python3 ansi256.py print-table -b 218 fg
+```
 ![](./screenshots/print-table-with-background.png)
 
 ### Printing Tests
@@ -59,7 +63,9 @@ options:
 ```
 
 For example:
-`python3 test -b 218 -f 196 "This is a test of red on pink"`
+```
+python3 test -b 218 -f 196 "This is a test of red on pink"
+```
 ![](./screenshots/test.png)
 
 ### Writing RC files
