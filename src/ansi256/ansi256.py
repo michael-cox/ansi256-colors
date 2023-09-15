@@ -1,12 +1,8 @@
-#!/usr/bin/python
 import math
 import argparse
 import pathlib
 import tabulate
 import sys
-
-# print("\033[1;31m" + "test")
-
 
 COLOR_CODE_FORMAT = "\033[{FGBG};5;{ID}m"
 TABLE_FORMAT = "\033[{FGBG};5;{ID}m{ID:03d}"
@@ -71,8 +67,7 @@ def test_text(text, fg, bg):
 
     print(fg_str + bg_str + text + RESET_FG + RESET_BG)
 
-
-if __name__ == "__main__":
+def main():
     args = get_args()
 
     if 'WHICH' in args:
@@ -104,7 +99,4 @@ if __name__ == "__main__":
         with open(args.FILE, 'w') as f:
             write_exports(f)
 
-
-    # with open(pathlib.Path.home() / '.zsh.colors', 'w') as f:
-    #     print_shell_colors(f)
 
