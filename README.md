@@ -2,9 +2,15 @@
 
 A tool to print and demo ansi color codes for a 256 color terminal.
 
+## Install
+Install using pip:
+```
+pip install ansi256colors
+```
+
 ## Usage
 ```
-> python3 ansi256.py -h
+> ansi256 -h
 usage: ansi256 [-h] {print-table,test,write} ...
 
 a tool for printing, testing, and exporting ansi color escapes
@@ -21,7 +27,7 @@ options:
 
 ### Printing Tables
 ```
-> python3 ansi256.py print-table --help
+> ansi256 print-table --help
 usage: ansi256 print-table [-h] [-f [0-255]] [-b [0-255]] {fg,bg,both}
 
 positional arguments:
@@ -37,18 +43,18 @@ options:
 
 For example:
 ```
-python3 ansi256.py print-table both
+ansi256 print-table both
 ```
 ![](./screenshots/print-table.png)
 
 ```
-python3 ansi256.py print-table -b 218 fg
+ansi256 print-table -b 218 fg
 ```
 ![](./screenshots/print-table-with-background.png)
 
 ### Printing Tests
 ```
-> python3 ansi256.py test -h         
+> ansi256 test -h         
 usage: ansi256 test [-h] [-f [0-255]] [-b [0-255]] TEXT
 
 positional arguments:
@@ -64,13 +70,13 @@ options:
 
 For example:
 ```
-python3 test -b 218 -f 196 "This is a test of red on pink"
+ansi256 test -b 218 -f 196 "This is a test of red on pink"
 ```
 ![](./screenshots/test.png)
 
 ### Writing RC files
 ```
-> python3 ansi256.py write -h
+> ansi256 write -h
 usage: ansi256 write [-h] FILE
 
 positional arguments:
@@ -81,7 +87,7 @@ options:
 ```
 
 ```
-> python3 ansi256.py write testrc
+> ansi256 write testrc
 > head -5 testrc
 export COLOR0_FG=$'%{\e[38;5;0m%}'
 export COLOR0_BG=$'%{\e[48;5;0m%}'
