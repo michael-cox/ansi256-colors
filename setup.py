@@ -32,6 +32,7 @@ setup(
         package_dir={"": "src"},
         packages=find_packages(where="src"),
 
+        install_requires=["tabulate"],
         python_requires=">=3.7, <4",
 
         entry_points={
