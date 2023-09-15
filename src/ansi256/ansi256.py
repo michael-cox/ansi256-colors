@@ -1,8 +1,6 @@
-import math
-import argparse
-import pathlib
-import tabulate
-import sys
+import argparse as _argparse
+import pathlib as _pathlib
+import tabulate as _tabulate
 
 COLOR_CODE_FORMAT = "\033[{FGBG};5;{ID}m"
 TABLE_FORMAT = "\033[{FGBG};5;{ID}m{ID:03d}"
@@ -17,7 +15,7 @@ ROWS = 256 // COLS
 
 
 def get_args():
-    parser = argparse.ArgumentParser(prog='ansi256', description='a tool for printing, testing, and exporting ansi color escapes')
+    parser = _argparse.ArgumentParser(prog='ansi256', description='a tool for printing, testing, and exporting ansi color escapes')
     subparsers = parser.add_subparsers(required=True)
     pt_parser = subparsers.add_parser('print-table', help='print a table of the ansi color codes')
     pt_parser.add_argument('WHICH', choices=['fg','bg','both'], help='specify whether to print foreground, background, or both color code tables')
@@ -28,7 +26,7 @@ def get_args():
     test_parser.add_argument('-f', '--foreground', type=int, metavar="[0-255]", choices=range(256), help='specify the foreground color code (0-255)')
     test_parser.add_argument('-b', '--background', type=int, metavar="[0-255]", choices=range(256), help='specify the background color code (0-255)')
     write_parser = subparsers.add_parser('write', help='write a zsh-rc style file that exports all color codes')
-    write_parser.add_argument('FILE', type=pathlib.Path, help='file to write the exports to')
+    write_parser.add_argument('FILE', type=_pathlib.Path, help='file to write the exports to')
     return parser.parse_args()
 
 def print_table(fg_or_bg, fg, bg):
@@ -46,7 +44,7 @@ def print_table(fg_or_bg, fg, bg):
     if fg_or_bg == "fg" and bg != -1:
         print(COLOR_CODE_FORMAT.format(FGBG=FGBG_TO_CODE["bg"], ID=bg), end="")
 
-    print(tabulate.tabulate(color_table, tablefmt='plain'))
+    print(_tabulate.tabulate(color_table, tablefmt='plain'))
 
 def write_exports(file):
     for i in range(256):
