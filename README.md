@@ -8,6 +8,9 @@ Install using pip:
 pip install ansi256colors
 ```
 
+This will install `ansi256` to your python bin. You can then call the script so
+long as that is in your path.
+
 ## Usage
 ```
 > ansi256 -h
