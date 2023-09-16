@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ansi256colors"
+authors = [
+    {name = "Michael Cox"},
+]
+description = 'A tool to print and demo ansi color codes for a 256 color terminal'
+version = "1.0.0"
+readme = "README.md"
+requires-python = ">=3.7, <4"
+classifiers=[
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: System :: Console Fonts",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3 :: Only",
+]
+keywords=["ansi", "ansi256", "color", "codes", "color codes", "console", "terminal", "emulator", "color", "256"]
+license = {file = "LICENSE"}
+dependencies = [
+"tabulate"
+]
+        
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.urls]
+Homepage = "https://github.com/michael-cox/ansi256-colors"
+
+[project.scripts]
+ansi256 = "ansi256:main"
